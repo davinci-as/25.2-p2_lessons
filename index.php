@@ -58,19 +58,23 @@ $pageTitle = "Programación Web II";
 <body>
     <h1> <?= $pageTitle ?></h1>
     <?php /* 1 - 3 */ ?>
-    <?php for($i = 0; $i < $cardsCount; $i++){ ?>
-    <div class="card" style="width: 18rem;">
-        <img src="<?= $gitProviders[$i]->url ?>" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">
-                <?= $gitProviders[$i]->title ?>
-            </h5>
-            <p class="card-text">
-                <?= $gitProviders[$i]->text ?>
-            </p>
-            <a href="<?= $gitProviders[$i]->link ?>" class="btn btn-primary">Ir a web</a>
+    <div class="container">
+        <div class="row">
+            <?php for($i = 0; $i < $cardsCount; $i++){ ?>
+            <div class="card" style="width: 18rem;">
+                <img src="<?= $gitProviders[$i]->url ?>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <?= $gitProviders[$i]->title ?>
+                    </h5>
+                    <p class="card-text">
+                        <?= $gitProviders[$i]->text ?>
+                    </p>
+                    <a href="<?= $gitProviders[$i]->link ?>" class="btn btn-primary">Ir a web</a>
+                </div>
+            </div>
+            <?php } ?>
         </div>
     </div>
-    <?php } ?>
 </body>
 </html>
