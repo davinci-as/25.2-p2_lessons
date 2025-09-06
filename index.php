@@ -56,11 +56,7 @@ $pageTitle = "Programación Web II";
     <?php } ?>
 </head>
 <body>
-    <h1>
-        <?php
-        echo $pageTitle; 
-        ?>
-    </h1>
+    <h1> <?= $pageTitle ?></h1>
     <?php /* 1 - 3 */ ?>
     <?php for($i = 0; $i < $cardsCount; $i++){ ?>
     <div class="card" style="width: 18rem;">
