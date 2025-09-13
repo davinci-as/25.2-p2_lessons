@@ -1,8 +1,9 @@
 <?php
 
 function setFormat($format) {
+    if($format == "row") return "100%";
     if($format == "column") return "18rem";
-    return "100%";
+    return "18rem";
 }
 
 $topic = $_GET["topic"];
@@ -61,6 +62,8 @@ if($topic == "git provider") {
     $list = [$github, $gitlab, $bitbucket];
 } else if($topic == "frameworks javascript"){
     $list = [$react, $angular];
+} else {
+    $list = [$github, $gitlab, $bitbucket, $react, $angular];
 }
 
 //echo var_dump($gitProviders);
