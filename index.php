@@ -1,5 +1,38 @@
 <?php
 
+function setFormat($format) {
+    if($format == "column") return "18rem";
+    return "100%";
+}
+
+$topic = $_GET["topic"];
+$format = $_GET["format"]; 
+$react= (object) [
+    "name" => "react",
+    "title" => "React",
+    "link" => "https://react.dev",
+    "text" => "The library for web and native user interfaces",
+    "url" => "https://images-cdn.openxcell.com/wp-content/uploads/2024/07/25085005/reactjs-inner.svg"
+];
+
+$angular= (object) [
+    "name" => "angular",
+    "title" => "Angular",
+    "link" => "https://angular.dev",
+    "text" => "Angular lets you start small ...",
+    "url" => "https://cdn.iconscout.com/icon/free/png-256/free-angular-icon-svg-download-png-226066.png"
+];
+
+$vue= (object) [
+    "name" => "react",
+    "title" => "React",
+    "link" => "https://react.dev",
+    "text" => "",
+    "url" => "https://images-cdn.openxcell.com/wp-content/uploads/2024/07/25085005/reactjs-inner.svg"
+];
+
+
+
 $github = (object) [
     'name' => 'github',
     'title' => "Github",
@@ -24,8 +57,11 @@ $bitbucket = (object) [
     "url" => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbsuQQUD-CKSk5-Pw6zmAPPO7_4CtaarQ7_g&s"
 ];
 
-
-$list = [$github, $gitlab, $bitbucket];
+if($topic == "git provider") {
+    $list = [$github, $gitlab, $bitbucket];
+} else if($topic == "frameworks javascript"){
+    $list = [$react, $angular];
+}
 
 //echo var_dump($gitProviders);
 
@@ -55,12 +91,12 @@ $pageTitle = "Programación Web II";
     <?php } ?>
 </head>
 <body>
-    <h1> <?= $pageTitle ?></h1>
+    <h1> <?= $pageTitle ?>: <?= $topic ?> </h1>
     <?php /* 1 - 3 */ ?>
     <div class="container">
         <div class="row">
             <?php for($i = 0; $i < count($list); $i++){ ?>
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: <?= setFormat($format); ?>">
                 <img src="<?= $list[$i]->url ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">
