@@ -25,9 +25,8 @@ $bitbucket = (object) [
 ];
 
 
-$gitProviders = [$github, $gitlab, $bitbucket];
+$list = [$github, $gitlab, $bitbucket];
 
-$cardsCount =  count($gitProviders);
 //echo var_dump($gitProviders);
 
 $cssLibrary = "bootstrap";
@@ -60,17 +59,17 @@ $pageTitle = "Programación Web II";
     <?php /* 1 - 3 */ ?>
     <div class="container">
         <div class="row">
-            <?php for($i = 0; $i < $cardsCount; $i++){ ?>
+            <?php for($i = 0; $i < count($list); $i++){ ?>
             <div class="card" style="width: 18rem;">
-                <img src="<?= $gitProviders[$i]->url ?>" class="card-img-top" alt="...">
+                <img src="<?= $list[$i]->url ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <?= $gitProviders[$i]->title ?>
+                        <?= $list[$i]->title ?>
                     </h5>
                     <p class="card-text">
-                        <?= $gitProviders[$i]->text ?>
+                        <?= $list[$i]->text ?>
                     </p>
-                    <a href="<?= $gitProviders[$i]->link ?>" class="btn btn-primary">Ir a web</a>
+                    <a href="<?= $list[$i]->link ?>" class="btn btn-primary">Ir a web</a>
                 </div>
             </div>
             <?php } ?>
