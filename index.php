@@ -10,9 +10,26 @@ if($topic == "git provider") {
 } else if($topic == "frameworks javascript"){
     $list = [$react, $angular];
 } else {
-    $list = [$github, $gitlab, $bitbucket, $react, $angular];
+    $list = [$github, $gitlab, $bitbucket, /*$react,*/ $angular];
 }
 
+if(
+    isset($_GET["name"]) && 
+    isset($_GET["title"]) && 
+    isset($_GET["link"]) && 
+    isset($_GET["text"]) && 
+    isset($_GET["url"])
+) {
+    $inbox = (object) [
+        "name" => $_GET["name"],
+        "title" => $_GET["title"],
+        'link' => $_GET["link"],
+        'text' => $_GET["text"],
+        "url" => $_GET["url"]
+    ];
+    
+    array_push($list, $inbox);
+}
 //echo var_dump($list);
 
 $cssLibrary = "bootstrap";
