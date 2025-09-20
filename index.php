@@ -14,18 +14,18 @@ if($topic == "git provider") {
 }
 
 if(
-    isset($_GET["name"]) && 
-    isset($_GET["title"]) && 
-    isset($_GET["link"]) && 
-    isset($_GET["text"]) && 
-    isset($_GET["url"])
+    isset($_POST["name"]) && 
+    isset($_POST["title"]) && 
+    isset($_POST["link"]) && 
+    isset($_POST["text"]) && 
+    isset($_POST["url"])
 ) {
     $inbox = (object) [
-        "name" => $_GET["name"],
-        "title" => $_GET["title"],
-        'link' => $_GET["link"],
-        'text' => $_GET["text"],
-        "url" => $_GET["url"]
+        "name" => $_POST["name"],
+        "title" => $_POST["title"],
+        'link' => $_POST["link"],
+        'text' => $_POST["text"],
+        "url" => $_POST["url"]
     ];
     
     array_push($list, $inbox);
@@ -77,6 +77,31 @@ $pageTitle = "Programación Web II";
             </div>
             <?php } ?>
         </div>
+    </div>
+
+    <div class="container mt-4">
+        <form action="/25.2-p2_lessons/" method="post">
+
+            <div class="input-group mb-3">
+                <input name="name"  type="text" class="form-control" placeholder="Nombre">
+            </div>
+            <div class="input-group mb-3">
+                <input name="title"  type="text" class="form-control" placeholder="Titulo">
+            </div>
+            <div class="input-group mb-3">
+                <input name="link"  type="text" class="form-control" placeholder="Link">
+            </div>
+            <div class="input-group mb-3">
+                <input name="text"  type="text" class="form-control" placeholder="Texto">
+            </div>
+            <div class="input-group mb-3">
+                <input name="url"  type="text" class="form-control" placeholder="Url">
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Enviar datos</button>
+            </div>
+
+        </form>
     </div>
 </body>
 </html>
