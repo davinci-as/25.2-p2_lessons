@@ -2,22 +2,31 @@
 require_once("./utils/data.php");
 require_once("./utils/format.php");
 
-$topic = $_GET["topic"];
-$format = $_GET["format"]; 
+$topic = "";
+$format = "column";
+$list = [];
 
-if($topic == "git provider") {
-    $list = [$github, $gitlab, $bitbucket];
-} else if($topic == "frameworks javascript"){
-    $list = [$react, $angular];
-} else {
+if (isset($_GET["topic"])) {
+    $topic = $_GET["topic"];
+    if ($topic == "git provider") {
+        $list = [$github, $gitlab, $bitbucket];
+    } else if ($topic == "frameworks javascript") {
+        $list = [$react, $angular];
+    }
+}
+
+if (isset($_GET["format"])) {
+    $format = $_GET["format"];
+}
+if($topic == ""){
     $list = [$github, $gitlab, $bitbucket, /*$react,*/ $angular];
 }
 
-if(
-    isset($_POST["name"]) && 
-    isset($_POST["title"]) && 
-    isset($_POST["link"]) && 
-    isset($_POST["text"]) && 
+if (
+    isset($_POST["name"]) &&
+    isset($_POST["title"]) &&
+    isset($_POST["link"]) &&
+    isset($_POST["text"]) &&
     isset($_POST["url"])
 ) {
     $inbox = (object) [
@@ -27,7 +36,7 @@ if(
         'text' => $_POST["text"],
         "url" => $_POST["url"]
     ];
-    
+
     array_push($list, $inbox);
 }
 //echo var_dump($list);
