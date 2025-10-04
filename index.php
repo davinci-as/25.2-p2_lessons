@@ -5,6 +5,12 @@ require_once("./utils/format.php");
 $topic = "";
 $format = "column";
 $list = [];
+$page = "home";
+
+if(isset($_GET["page"])) {
+    //TODO: validar que la pagina sea valida
+    $page = $_GET["page"]; 
+}
 
 if (isset($_GET["topic"])) {
     $topic = $_GET["topic"];
