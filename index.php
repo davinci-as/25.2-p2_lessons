@@ -2,14 +2,18 @@
 require_once("./utils/data.php");
 require_once("./utils/format.php");
 
+
 $topic = "";
 $format = "column";
 $list = [];
 $page = "home";
+$routes = ["home", "contact", "prueba"];
 
 if(isset($_GET["page"])) {
-    //TODO: validar que la pagina sea valida
-    $page = $_GET["page"]; 
+    $page = $_GET["page"];
+    if(!in_array($page, $routes)) {
+        $page = "404";
+    }
 }
 
 if (isset($_GET["topic"])) {
