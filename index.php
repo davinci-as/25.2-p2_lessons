@@ -1,12 +1,14 @@
 <?php
 require_once("./utils/data.php");
 require_once("./utils/format.php");
+require_once("./utils/connection.php");
 
 
 $topic = "";
 $format = "column";
 $list = [];
 $page = "home";
+//TODO: está lista debería venir de la DB
 $routes = ["home", "contact", "prueba"];
 
 if(isset($_GET["page"])) {
