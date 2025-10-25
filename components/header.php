@@ -1,9 +1,9 @@
 <ul class="nav justify-content-center">
   <?php 
-  while($value = mysqli_fetch_assoc($result)) {
+    for ($i=0; $i < count($fullRoutes); $i++) { 
   ?>
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="/25.2-p2_lessons/?page=<?= $value["route"]?>"><?= $value["name"]?></a>
+    <a class="nav-link active" aria-current="page" href="/25.2-p2_lessons/?page=<?= $fullRoutes[$i]["route"]?>"><?= $fullRoutes[$i]["name"]?></a>
   </li>
   <?php
   }

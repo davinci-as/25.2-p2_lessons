@@ -8,8 +8,12 @@ $topic = "";
 $format = "column";
 $list = [];
 $page = "home";
-//TODO: está lista debería venir de la DB
-$routes = ["home", "contact", "prueba"];
+
+function paths ($route) {
+    return $route["route"];
+}
+
+$routes = array_map("paths",$fullRoutes);
 
 if(isset($_GET["page"])) {
     $page = $_GET["page"];
