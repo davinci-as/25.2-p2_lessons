@@ -2,6 +2,7 @@
 require_once("./utils/data.php");
 require_once("./utils/format.php");
 require_once("./utils/connection.php");
+require_once("./utils/postData.php");
 
 
 $topic = "";
@@ -22,21 +23,34 @@ if(isset($_GET["page"])) {
     }
 }
 
-if (isset($_GET["topic"])) {
-    $topic = $_GET["topic"];
+$topic = $_GET["topic"];
+
+if(isset($_GET["topic"])) {
+    for ($i=0; $i < count($fullPosts); $i++) { 
+        $post = $fullPosts[$i];
+        if($post["topic"] == $topic) {
+            //var_dump($github);
+            array_push($list, $post);
+        }
+    }
+} else {
+    $list = $fullPosts;
+}
+
+
+/*if (isset($_GET["topic"])) {
+    
     if ($topic == "git provider") {
         $list = [$github, $gitlab, $bitbucket];
     } else if ($topic == "frameworks javascript") {
         $list = [$react, $angular];
     }
-}
+}*/
 
 if (isset($_GET["format"])) {
     $format = $_GET["format"];
 }
-if($topic == ""){
-    $list = [$github, $gitlab, $bitbucket, /*$react,*/ $angular];
-}
+
 
 if (
     isset($_POST["name"]) &&
@@ -55,7 +69,6 @@ if (
 
     array_push($list, $inbox);
 }
-//echo var_dump($list);
 
 $cssLibrary = "bootstrap";
 $pageTitle = "Programación Web II";
