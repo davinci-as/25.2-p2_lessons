@@ -1,4 +1,24 @@
 <script>
+    function addItem(parent, obj) {
+        const child = document.createElement("div");
+        child.className = "card";
+        child.style.width = '18rem';
+        parent.appendChild(child);
+        child.innerHTML = `
+            <img src="${obj.url}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">
+                    ${obj.title}
+                </h5>
+                <p class="card-text">
+                    ${obj.text}
+                </p>
+                <a href="${obj.link}" class="btn btn-primary">Ir a web</a>
+            </div>
+        `;
+
+    }
+
     const angularJs = {
         "name": "angularjs",
         "title": "AngularJS",
@@ -17,40 +37,13 @@
     }
     gitlab["topic"] = "git_provider";
 
+    const items = [angularJs, gitlab];
+
     const parent = document.querySelector("#post_container");
 
+    for (let index = 0; index < items.length; index++) {
+        const child = items[index];
+        addItem(parent, child);
+    }
 
-    const child = document.createElement("div");
-    child.className = "card";
-    child.style.width = '18rem';
-    parent.appendChild(child);
-    child.innerHTML = `
-        <img src="${gitlab.url}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">
-                ${gitlab.title}
-            </h5>
-            <p class="card-text">
-                ${gitlab.text}
-            </p>
-            <a href="${gitlab.link}" class="btn btn-primary">Ir a web</a>
-        </div>
-    `;
-
-    const otherChild = document.createElement("div");
-    otherChild.className = "card";
-    otherChild.style.width = "18rem";
-    parent.appendChild(otherChild);
-    otherChild.innerHTML = `
-        <img src="${angularJs.url}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">
-                ${angularJs.title}
-            </h5>
-            <p class="card-text">
-                ${angularJs.text}
-            </p>
-            <a href="${angularJs.link}" class="btn btn-primary">Ir a web</a>
-        </div>
-    `;
 </script>
