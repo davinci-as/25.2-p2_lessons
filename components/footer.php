@@ -19,6 +19,16 @@
 
     }
 
+    function addTopics (topics) {
+        //actualizar vista con los topics
+        const topics_container = document.querySelector('#topics_container');
+        for(let i = 0; i < topics.length; i++) {
+            const button = document.createElement('a');
+            button.href = "#";
+            button.text = topics[i].topic_name
+            topics_container.appendChild(button);
+        }
+    }
     const parent = document.querySelector("#post_container");
     fetch("/25.2-p2_lessons/api/cards/")
         .then(data => {
@@ -30,6 +40,15 @@
                 const child = items[index];
                 addItem(parent, child);
             }
+        })
+    
+    fetch("/25.2-p2_lessons/api/topics/")
+        .then(data => {
+            const items = data.json();
+            return items;
+        })
+        .then(topics => {
+            addTopics(topics)
         })
 
 </script>
