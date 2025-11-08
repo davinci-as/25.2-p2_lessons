@@ -19,13 +19,17 @@
 
     }
 
-    const items = <?= json_encode($list) ?>;
-
     const parent = document.querySelector("#post_container");
-
-    for (let index = 0; index < items.length; index++) {
-        const child = items[index];
-        addItem(parent, child);
-    }
+    fetch("/25.2-p2_lessons/api/cards/")
+        .then(data => {
+            const items = data.json();
+            return items
+        })
+        .then(items => {
+            for (let index = 0; index < items.length; index++) {
+                const child = items[index];
+                addItem(parent, child);
+            }
+        })
 
 </script>
