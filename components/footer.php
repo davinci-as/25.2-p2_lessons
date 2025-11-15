@@ -30,25 +30,22 @@
         }
     }
     const parent = document.querySelector("#post_container");
+
+    const addChildren = (items) => {
+        for (let index = 0; index < items.length; index++) {
+            const child = items[index];
+            addItem(parent, child);
+        }
+    }
+
+    const convertToJSON = data => data.json();
+
     fetch("/25.2-p2_lessons/api/cards/")
-        .then(data => {
-            const items = data.json();
-            return items
-        })
-        .then(items => {
-            for (let index = 0; index < items.length; index++) {
-                const child = items[index];
-                addItem(parent, child);
-            }
-        })
+        .then(convertToJSON) //primero lo convierto en json
+        .then(addChildren)
     
     fetch("/25.2-p2_lessons/api/topics/")
-        .then(data => {
-            const items = data.json();
-            return items;
-        })
-        .then(topics => {
-            addTopics(topics)
-        })
+        .then(convertToJSON)
+        .then(addTopics)
 
 </script>
